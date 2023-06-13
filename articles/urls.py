@@ -1,13 +1,15 @@
 
 from django.urls import path, include
-from .views import ArticleViewSet
+from .views import ArticleViewSet, UserViewset
 from rest_framework.routers import DefaultRouter
 
 
 router = DefaultRouter()
-router.register('', ArticleViewSet, basename='articles')
+router.register('articles', ArticleViewSet, basename='articles')
+
+router.register('users', UserViewset, basename='articles')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
